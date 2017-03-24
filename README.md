@@ -1,10 +1,10 @@
-#Tutoriel Javascript P5 orienté objects
+# Tutoriel Javascript P5 orienté objects
 
 Ce tutoriel est une introduction au javascript et au framework P5, le tout orienté objets.
 
 *Disclaimer : Je ne prétends pas être un expert en la matière. Je réalise ce tutoriel basé sur mes connaissances, qui peuvent ne pas être complètes ou à jour.*
 
-##Qu'est-ce qu'un framework
+## Qu'est-ce qu'un framework
 
 > Un framework désigne un ensemble de composants logiciele qui servent à créer les fondations ainsi que les grandes lignes d'un logiciel.
 [Wikipedia](https://fr.wikipedia.org/wiki/Framework "Page Wikipedia sur les framework")
@@ -14,27 +14,27 @@ En gros, ce sont des fonctions écrites par des gens sympatiques sur lesquels no
 Exemple : le framework P5, axé sur la création de contenus graphiques sur une page HTML.
 Au lieu de créer des éléments HTML de type canvas et de s'embêter avec tout les paramètres et les syntaxes complexes, ce framework possède des fonctions adaptées, comme `createCanvas(width,height);` qui créé un canvas HTML automatiquement à notre place.
 
-##Pourquoi P5
+## Pourquoi P5
 
 Il existe une multitude de framerowk Javascript et tout le monde a ses préférences.
 J'ai découvert P5 grâce à des challenge de code sur Internet réalisés par [Daniel Shiffman](http://thecodingtrain.com/ "Site de Daniel Shiffman").
 C'est un très bon framework pour créer du contenu graphique, mais il est très jeune, ce qui a des avantages et des inconvéniants.
 
-##Environnement de développement
+## Environnement de développement
 
 Il est important d'avoir un environnement de développement stable dans lequel on se sent à l'aise pour coder.
 Afin de pouvoir travailler sur nos projets depuis partout, il est aussi une bonne idée de posséder un compte Github. Nous en reparlerons sous peu.
 
-###Editeur de code
+### Editeur de code
 
 L'éditeur de code de choix, pour ma part, est [Visual Studio Code](https://code.visualstudio.com/ "Sit web du VS Code"), développé par Microsoft. Il est simple d'utilisation, multi-plateforme, intègre une bibliothèque de plugins et une interface graphique pour Git (nous en reparlerons plus tard)
 
-###Gestionnaire de version
+### Gestionnaire de version
 
 Git est un logiciel de [versionning](https://en.wikipedia.org/wiki/Software_versioning "Page Wikipedia sur le versionning (EN)"). Nous ne l'utiliserons pas seul, mais en association avec la plateforme Github, qui permet de stocker des projets gratuitement tant que ceux-ci sont open source. Git nous permettra d'envoyer notre code depuis l'éditeur de code à Github en quelques cliques.
 Le but ici est dans un premier temps de stocker notre code en ligne pour y accéder partout, mais Github est avant tout une plateforme de contribution. Si vous commencez un projet plus ambitieux, d'autres personnes pourrons participer à votre projet open source au travers de Github.
 
-###Navigateur
+### Navigateur
 
 Notre but est de créer des applications web, et pour cela, nous aurons besoin d'un navitateur (logique).
 Mes conseils : Si  vous êtes sous Windows, utilisez Chrome, si vous êtes sur Linux, utilisez Firefox.
@@ -43,7 +43,7 @@ Chrome est l'un des navigateurs les plus utilisés et supporte toutes les derni�
 
 Firefox est tout aussi bien que Chrome, et est installé de base sur Linux.
 
-###Serveur Web
+### Serveur Web
 
 Nous utiliserons un serveur web local pour développer nos applications. Il est important d'en utiliser un, car cela permet de voir le *vrai* résultat final, comme si le site était réellement hébergé en ligne.
 Cela permet notemment de bypass une sécurité présente dans les navigateurs empêchant un fichier javascript de charger des images depuis le disque.
@@ -52,11 +52,11 @@ En hébergeant le site web, même en local, cette sécurité tombe, puisque les 
 
 Nous utiliserons XAMPP sur Windows, et LAMP sur Linux pour créer notre serveur web.
 
-##Installation et configuration de l'environnement
+## Installation et configuration de l'environnement
 
-###Windows 10
+### Windows 10
 
-###Git
+### Git
 
 La première étape est de télécharger Git pour Windows. Rendez-vous sur le [site de Git](https://git-scm.com/download/win "Page de téléchargement de Git pour Windows") et enregistrez le fichier exe.
 Lancez l'installation avec les paramètres par défaut (sauf si vous vous y connaissez, mais dans ce cas : pourquoi lisez-vous ce tutoriel ?)
@@ -70,16 +70,16 @@ git config --global user.email <email Github>
 
 Cette partie est importante pour plus tard.
 
-###Visual Studio Code
+### Visual Studio Code
 
 Une fois Git installé, rendez-vous sous le [site de VS Code](https://code.visualstudio.com/docs/?dv=win "Téléchargement de VS Code") et téléchargez l'executable.
 Suivez les instructions d'installation et gardez les options de base.
 
-###Google Chrome
+### Google Chrome
 Rendez vous sur le [site de Google Chrome](https://www.google.com/chrome/browser/thankyou.html?platform=win64&statcb=1&installdataindex=defaultbrowser "Téléchargement de Google Chrome") et téléchargez l'installateur.
 Lancez-le.
 
-###XAMPP
+### XAMPP
 
 Récupérez l'installeur de [XAMPP pour Windows](https://www.apachefriends.org/xampp-files/7.1.1/xampp-win32-7.1.1-0-VC14-installer.exe "Téléchargement de XAMPP") et lancez le setup.
 Nous n'aurons beosin que d'Apache, vous pouvez donc désactiver tout les autres services.
@@ -87,7 +87,7 @@ Nous n'aurons beosin que d'Apache, vous pouvez donc désactiver tout les autres 
 Cette étape n'est pas requise si vous ne souhaitez pas charger des fichiers images en JS, mais je vous recommande vivement de le faire.
 
 
-##Github
+## Github
 
 Félicitation ! Vous avez maintenant terminé l'installation de votre environnement de développement.
 Nous allons maintenant créer un compte sur Github afin de pouvoir y stocker notre code.
@@ -101,7 +101,7 @@ Cochez la case *Initialize this repository with a README* qui créera un fichier
 
 Vous pouvez maintenant créer le dépot.
 
-##Premier projet
+## Premier projet
 
 Vous avez maintenant créé un dépot Github vide. Enfin, pas vraiment vide, il contient un fichier README.
 
@@ -144,5 +144,5 @@ VS Code vous demandera vos identifiants Github afin de pouvoir envoyer le code.
 
 Et wala ! Vous avez effectué un commit.
 
-###Ubuntu 16.04
+### Ubuntu 16.04
 *Todo*
