@@ -62,7 +62,7 @@ La première étape est de télécharger Git pour Windows. Rendez-vous sur le [s
 Lancez l'installation avec les paramètres par défaut (sauf si vous vous y connaissez, mais dans ce cas : pourquoi lisez-vous ce tutoriel ?)
 Je vous conseille juste d'utiliser l'option "Use Git from the Windows Command Prompt" afin d'avoir accès aux commandes depuis une console Powershell, par exemple.
 
-Justement, ouvrez une console Powershell et tapez les commandes suivantes, en remplaçant les champs par vos informations Github, afin que Git vous connaisse.
+Justement, ouvrez une console Powershell et tapez les commandes suivantes, en remplaçant les champs par vos informations Github, afin que Git vous connaisse. (Remplaccez `<pseudo Github>` par votre peusdo, **en laissant les guillemets**)
 ```bash
 git config --global user.name "<pseudo Github>"
 git config --global user.email <email Github>
@@ -143,6 +143,5 @@ Une proposition aura apparu au millieu en haut de l'écran, nommé *Origin* suiv
 VS Code vous demandera vos identifiants Github afin de pouvoir envoyer le code.
 
 Et wala ! Vous avez effectué un commit.
-
-### Ubuntu 16.04
-*Todo*
+C'est le fait de soumettre les modifications que vous avez mises en attente (en tapant ctrl+Enter, précédement). Ici, nous envoyons les changements sur Github.
+Si vous rafraichissez la page Github de votre projet, votre fichier aura apparu, accompagné du message décrivant ses changements.
