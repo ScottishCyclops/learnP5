@@ -5,7 +5,7 @@ Dans ce chapitre, nous allons voir la constitution d'un projet P5.
 Pour commencer, nous allons répurérer la librairie P5 sur le site officiel.
 Voici un [lien direct](https://github.com/processing/p5.js/releases/download/0.5.8/p5.min.js "Librairie P5") vers la version complete et compressée.
 
-Enregistrez ce fichier à la racine de votre projet Git, créé durant [l'introduction]("./1) Introduction.md").
+Enregistrez ce fichier à la racine de votre projet Git, créé durant [l'introduction]("1-Introduction.md").
 Nous allons maintenant créer une page HTML, car après tout, Javascript n'est rien sans page web.
 Ouvrez le dossier du projet dans Visual Studio code (clique droit sur le dossier, *Open with Code*).
 Créez un nouveau fichier dans le dossier et nommez-le `index.html`.
