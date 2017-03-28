@@ -1,5 +1,5 @@
 # Projet P5
-Dans ce chapitre, nous allons voir la constitution d'un projet P5.
+Dans ce chapitre, nous allons voir la constitution d'un projet P5 ainsi que les bases de Javascript.
 
 ## Fichiers de base
 Pour commencer, nous allons répurérer la librairie P5 sur le site officiel.
