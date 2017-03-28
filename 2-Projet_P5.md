@@ -304,14 +304,146 @@ function setup()
 function draw()
 {
     background(couleurFond);
+    
     fill(200,50,5);
     noStroke();
     rect(x,y,taille,taille);
+    
+    x++;
 }
 ```
 
 ### Tests logiques
 Tout ça c'est très bien, mais le carré nous quitte tristement et ne revient jamais.
-Nous allons donc faire en sorte que
+Nous allons donc faire en sorte que lorsque le carré atteint le bord droit de l'écran, sa position soit changée en le bord gauche de l'écran.
+Comment faire ça ? Avec des tests logiques. Nous connaissons la position x et la position maximum, puisque c'est la largeur de l'écran.
+Voici à quoi ressemble un test logique
 
---- to contjbue
+```javascript
+if(expression booléenne est vrai)
+{
+    faire quelque chose
+}
+else
+{
+    faire autre chose
+}
+```
+le mot clé `if`, tratuit *si*, est accompagné de parenthèses dans lesquels ont effectue un test logique, ou test booléen. Pourquoi booléen ? Car il utilise l'algèbre de boole.
+C'est quoi que c'est-y dit-moi que ça, hein ?
+
+#### Algèbre de boole
+L'algèbre de boole est un système de calcul dont le résultat est soit **vrai**, soit **faux**. Si vous vous souvenez, plus haut, lors de la création de variables, j'ai créé l'instruction suivante `let c = true`. J'ai créé une varibale qui contient un booléen : *vrai*.
+
+Dans l'algèbre de boole, on utilise des opérateurs différents des habituels `+ - * /`.
+
+Opérateurs booléens principaux
+------------------------------
+==    | Compare deux valeurs, retourne vrai si les valeurs des deux côtés sont égales, faux sinon
+<     | ce qui est à gauche est plus petit que ce qui est à droite
+>     | ce qui est à gauche est plus grand que ce qui est à droite
+!=    | L'inverse du premier, retourne vrai si les valeurs ne sont pas égales
+
+Soit la situation suivante :
+
+```javascript
+let a = 2;
+let b = (a == 2);
+```
+
+Vous pouvez voir les booléens comme des questions.
+*Est-ce que a est égal à 2 ?*, si oui, l'expression retourne vrai, sinon, elle retourne faux. Et ce résultat est stockée dans *b*.
+
+Voici quelques opérateurs supplémentaires qui nous serons utiles dans le futur.
+
+Opérateurs booléens supplémentaires
+-----------------------------------
+`&&` | ET. Pour retourner vrai, les valeurs à gauche et à droite doivent être vrai
+`||` | OU. Il faut que l'une des deux valeurs soit vrai que qu'il retourne vrai
+`!`  | NON. inverse la condition
+
+On peut faire plusieurs tests ensemble. Soit la situation suivante :
+
+```javascript
+let a = 2;
+let b = 5;
+let c = (a == 2 && b == 1)
+```
+
+Le test si-dessus retourne faux. car *a* est égale à 2, donc vrai à gauche, mais *b* n'est pas égal à 1, donc faux à droite.
+*vrai* et *faux* donne faux. 
+
+Nous aurons l'occasion d'utiliser chacun d'entre eux durant les excercice et de les réexpliquer en détail, avec des exemples concrêts.
+[Plus sur l'algèbre de boole](https://fr.wikipedia.org/wiki/Alg%C3%A8bre_de_Boole)
+
+De retour à nos tests logiques, il s'agit simplement de tester la valeur d'un booléen.
+Dans notre cas, nous voulons la condition suivante :
+*Si la position x est plus grande que la largeur, x doit valoir zéro. Sinon, x doit être incrémenté*
+
+Qui se traduit en code par :
+
+```javascript
+if(x > LARGEUR)
+{
+    x = 0;
+}
+else
+{
+    x++;
+}
+```
+
+Nous pouvons donc remplacer la partie *x++;* dans notre code actuel par le test ci-dessus.
+Ainsi, tant que x est entre 0 et la largeur, il sera incrémenté de 1, sinon, il sera remis à 0.
+
+Voici notre code actuel :
+
+```javascript
+//constantes
+const LARGEUR = 800;
+const HAUTEUR = 600;
+
+//variables globales
+let x;
+let y;
+let taille;
+let couleurFond;
+
+function setup()
+{
+    couleurFond = 0;
+    
+    createCanvas(LARGEUR,HAUTEUR);
+    background(couleurFond);
+    
+    x = LARGEUR / 2;
+    y = HAUTEUR / 2;
+    taille = 10;
+}
+
+function draw()
+{
+    background(couleurFond);
+    
+    fill(200,50,5);
+    noStroke();
+    rect(x,y,taille,taille);
+    
+    if(x > LARGEUR)
+    {
+        x = 0;
+    }
+    else
+    {
+        x++;
+    }
+}
+```
+
+Félicitations ! Vous avez créé un cube qui parcours l'écran de gauche à droite.
+Cet exercice vous à appris les bases de javascript.
+Vous trouverai toutes les fonctions P5 sur sa [documentation](http://p5js.org/reference/).
+Pour ce qui est de questions générales de javascript, votre moteur de recherche favoris devrait vous ouvrir les portes de [Stack Overflow](https://stackoverflow.com/), qui contient une réponse à tout.
+Sinon, pour la documentation de base de Javascript, le [Mozilla Developper Network](https://developer.mozilla.org/en-US/docs/Web/javascript) devrait satisfaire toutes vos questions.
+
+Dans les prochains tutoriels, nous aborderons des conceptes un peu plus complexes et un peu plus intéressants, comme les objets.
