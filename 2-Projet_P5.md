@@ -25,8 +25,8 @@ Dans ce fichier, collez le code suivant :
 </html>
 ```
 C'est le minimum vital pour faire une page web, plus deux lignes spéciales sur lesquels nous allons nous attarder :
-`<script src="p5.min.js"></script>` permet d'inclure la librairie que nous avons téléchargée.
-`<script src="sketch.js"></script>` permet de la même manière, d'inclure un fichier *sketch.js*, qui n'existe pas encore.
+- `<script src="p5.min.js"></script>` permet d'inclure la librairie que nous avons téléchargée.
+- `<script src="sketch.js"></script>` permet de la même manière, d'inclure un fichier *sketch.js*, qui n'existe pas encore.
 
 Nous allons le créer dès à présent, de la même manière que pour le fichier html.
 > Astuce : vous pouvez également faire *ctrl+clic* sur le nom du fichier dans la balise html, vs code vous dira qwe le fichier n'existe pas et vous proposera de le créer.
@@ -112,6 +112,114 @@ Et si nous codions un carré se dirigeant sur la droite de l'écran, puis rentra
 
 Pour cela, nous allons avoir besoin de la fonction *draw*
 
-en dessous de la fonction setup, hors de son bloc d'instruction
+En dessous de la fonction setup, hors de son bloc d'instruction, nous allons écrire la fameuse fonction *draw*.
 
---to continue
+```javascript
+function draw()
+{
+}
+```
+
+Nous la remplirons plus tard.
+Tout d'abord, nous allons utiliser une autre fonction de P5 pour dessiner un carré. Cette fonction se nomme `rect`, raccourcis pour *rectangle*.
+Si vous regardez la page de documentation de cette fonction, vous verrez que cete fonction nous demande une position *x* et *y*, un largeur et un hauteur.
+
+La position *x/y* n'est autre que l'emlacement sur le canvas, exprimé en pixels. la postion *x* est la position horizontal, de 0 au nombre de pixels de large de notre canvas. Et *y* la position vertical.
+
+En P5, l'origine (position 0,0) est en haut à gauche de du canvas. Les valeurs s'incrémentes en allant à droite et vers le bas.
+
+Vous aurez compris qu'il nous faudra connaître plusieurs choses : la **taille du canvas**, la **position du rectange**, la **taille du rectangle**.
+Il faudra donc stocker des valeurs. Ceci va nous introduire aux variables en javascript.
+
+```javascript
+let a = 42;
+let b = 'texte'
+const c = true;
+```
+Le code ci-dessus créé plusieurs variables en javascript.
+Le mot-clé `let` permet de dire que ce qui suit est une variable. Le mot-clé `const` permet de définir une constante, qui ne pourra pas être modifiée.
+S'en suit le nom de la variable `a`. Puis un signe égal `=` pour affecter une valeur à cette variable.
+Comme dit précédement, les variables js ne sont pas typées, on peut donc donner n'importe quel type de valeur, comme un nombre `0`, une chaine `'texte'` ou un booléen `true` (que nous revérons plus tard).
+
+De retour à notre programme, nous allons nous déplacer tout en haut, au-dessus de la fonction setup.
+Nous allons décalrer des constantes pour la largeur et hauteur de notre canvas.
+
+```javascript
+const LARGEUR = 800;
+const HAUTEUR = 600;
+```
+
+Vous êtes libres d'utiliser la convention de nommage que vous souhaitez, mais restez consistant.
+
+Pendant que nous commes là, nous allons déclarer quelques autress variables. Tout ce qui est déclaré ici, en dehors des fonctions, est global. Ces variables seront donc accessibles depuis partout dans notre programme, ce qui est exactement ce que l'on veut.
+
+```javascript
+//constantes
+const LARGEUR = 800;
+const HAUTEUR = 600;
+
+//variables globales
+let x;
+let y;
+let taille;
+```
+
+J'ai pour bonne habitude de ne pas initialiser des variables globales à leur création, sauf les constantes.
+Vous remarquerez également que j'ai ajouté deux lignes qui commencent par des double slash `//`. Ce sont des commentaires uniligne.
+Ce qui signifique que le reste de la ligne sera ignoré par le programme, mais certainement pas par nous.
+
+Il n'est pas nécéssaire de commenter chaque ligne de code, mais un commentaire au-dessus d'une action louche est toujours utile pour vous plus tard, ou une autre personne voulant comprendre votre code.
+
+Nous allons maintenant nous rendre dans la fonction setup pour affecter des valeurs de base à ces variables.
+
+```javascript
+//constantes
+const LARGEUR = 800;
+const HAUTEUR = 600;
+
+//variables globales
+let x;
+let y;
+let taille;
+let couleurFond;
+
+function setup()
+{
+    couleurFond = 0;
+    
+    createCanvas(LARGEUR,HAUTEUR);
+    background(couleurFond);
+    
+    x = LARGEUR / 2;
+    y = HAUTEUR / 2;
+    taille = 10;
+}
+```
+
+Beaucoup de choses se sont passées. J'ai ajouté une variable pour stocker la couleur du fond. Je dois affecter une valeur à celle-ci avant de l'utiliser.
+J'ai utilisé mes constantes pour définir la taille du canvas.
+Les autres variables sont définies à la fin de la fonction setup.
+J'ai affecté comme position x et y par défaut le centre de l'écran grâce aux mathématiques.
+
+```javascript
+x = LARGEUR/2;
+```
+
+J'affecte à la variable x le résultat du calcule `LARGEUR / 2`. Largeur vaut `800`, en le divisant par deux, cela donne `400`, qui sera le centre de notre écran en largeur. Pareil pour la variable y.
+
+Javascript s'occupe de décider si oui ou non il faut stoker un résultat à virgule ou pas. Mais dans ce cas, nous voulons éviter d'avoir un résultat non entier. Nous pouvons forcer le résultat sous forme d'entier grâce à la fonction `int()`
+
+```javascript
+x = int(LARGEUR/2);
+```
+Nous effecuons notre divison, puis la convertissons en entier et l'affectons à `x`.
+
+De retour dans notre fonction *draw*, que nous avions lâchement abandonnée, nous allons créer notre fameux carré avec la fonction rect. Un carré n'est autre qu'un rectangle de même largeur et hauteur !
+
+```javascript
+function draw()
+{
+    rect(x,y,taille,taille);
+}
+```
+Nous avons maintenant dessiné un rectangle à la position *x/y* de taille *taille*
