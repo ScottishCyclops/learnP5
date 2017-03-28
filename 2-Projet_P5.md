@@ -440,6 +440,8 @@ function draw()
 }
 ```
 
+N'oubliez pas de commit vos modifications sur Github.
+
 Félicitations ! Vous avez créé un cube qui parcours l'écran de gauche à droite.
 Cet exercice vous à appris les bases de javascript.
 Vous trouverai toutes les fonctions P5 sur sa [documentation](http://p5js.org/reference/).
