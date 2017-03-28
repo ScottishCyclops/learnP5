@@ -1,4 +1,4 @@
-# Projet P5
+# Bases Javascript
 Dans ce chapitre, nous allons voir la constitution d'un projet P5 ainsi que les bases de Javascript.
 
 ## Fichiers de base
