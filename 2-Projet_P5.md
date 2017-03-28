@@ -1,7 +1,7 @@
 # Projet P5
 Dans ce chapitre, nous allons voir la constitution d'un projet P5.
 
-## Fichiers
+## Fichiers de base
 Pour commencer, nous allons répurérer la librairie P5 sur le site officiel.
 Voici un [lien direct](https://github.com/processing/p5.js/releases/download/0.5.8/p5.min.js "Librairie P5") vers la version complete et compressée.
 
@@ -31,7 +31,7 @@ C'est le minimum vital pour faire une page web, plus deux lignes spéciales sur 
 Nous allons le créer dès à présent, de la même manière que pour le fichier html.
 > Astuce : vous pouvez également faire *ctrl+clic* sur le nom du fichier dans la balise html, vs code vous dira qwe le fichier n'existe pas et vous proposera de le créer.
 
-## Structure P5
+## Premier code
 Nous avons créé un fichier nommé *sketch.js*. Annalysons tout d'abord le nom de ce fichier.
 *sketch* est le nom "par défaut" pour les fichiers P5. Vous pouvez mettre n'importe quoi, mais c'est le nom standard, que nous allons conserver pour des raisons pratiques.
 *.js* est l'extension du fichier, il s'agit d'un fichier standard Javascript.
@@ -66,6 +66,7 @@ Maintenant que nous savons ce qui se passe, nous allons créer un **canvas**.
 Un canvas est un élément HTML dans lequel on peut dessiner.
 P5 propose des fonctions pour en créer un facilement puis y dessiner.
 
+### Documentation P5
 Je vais parler de différentes fonctions de la librairie, mais je ne pourrai pas toutes les couvrir. Un bon endroit pour en apprendre plus de votre côté est la [documentation P5](http://p5js.org/reference/), qui contient beaucoup d'exemple pour toutes les fonctionnalitées de la librairie.
 
 Justement, rendons-nous sur la documentation pour la fonction `createCanvas`.
@@ -87,6 +88,7 @@ Ces points virgule n'est pas obligatoires pour que le code soit executé, mais i
 Nous allons appeler une seconde fonction pour remplir notre canvas avec une couleur unie.
 Cette fonction est nommée `background`. Vous pouvez allez la chercher sur la documentation, et vous trouverez qu'elle demande une couleur en paramètre.
 
+### Couleurs
 Les couleurs dans P5 peuvent être représentées de pleins de manières différentes.
 Si vous passez un seule valeur à `background` entre 0 et 255, il va l'interpréter comme une valeur de gris. Vous pouvez également passer trois valeurs entre 0 et 255 séparées par des virgules et elles seront interprétées en tant que *rouge*, *vert* et *bleu*.
 
@@ -108,6 +110,7 @@ Notre fichier html étant nommé *index.html*, le serveur web nous le donne dire
 Sur la page web, vous devriez voir une zone de 800x600 pixels noirs sur fond blanc. Félicitations !
 Nous allons maintenant dessiner des *choses* sur cette page.
 
+### Dessinons un carré
 Et si nous codions un carré se dirigeant sur la droite de l'écran, puis rentrant sur l'écran de l'autre côté une fois hors de vue ?
 
 Pour cela, nous allons avoir besoin de la fonction *draw*
@@ -131,6 +134,7 @@ En P5, l'origine (position 0,0) est en haut à gauche de du canvas. Les valeurs 
 Vous aurez compris qu'il nous faudra connaître plusieurs choses : la **taille du canvas**, la **position du rectange**, la **taille du rectangle**.
 Il faudra donc stocker des valeurs. Ceci va nous introduire aux variables en javascript.
 
+### Variables
 ```javascript
 let a = 42;
 let b = 'texte'
@@ -201,6 +205,8 @@ J'ai utilisé mes constantes pour définir la taille du canvas.
 Les autres variables sont définies à la fin de la fonction setup.
 J'ai affecté comme position x et y par défaut le centre de l'écran grâce aux mathématiques.
 
+### Math et nombres à virgules
+
 ```javascript
 x = LARGEUR/2;
 ```
@@ -214,6 +220,7 @@ x = int(LARGEUR/2);
 ```
 Nous effecuons notre divison, puis la convertissons en entier et l'affectons à `x`.
 
+### Dessiner
 De retour dans notre fonction *draw*, que nous avions lâchement abandonnée, nous allons créer notre fameux carré avec la fonction rect. Un carré n'est autre qu'un rectangle de même largeur et hauteur !
 
 ```javascript
@@ -222,4 +229,89 @@ function draw()
     rect(x,y,taille,taille);
 }
 ```
-Nous avons maintenant dessiné un rectangle à la position *x/y* de taille *taille*
+
+Nous avons maintenant dessiné un rectangle à la position *x/y* de taille *taille*.
+Vous pouvez retourner sur la page web et la rafraichir et et et... Rien.
+Nous n'avons pas dit à P5 de quel couleur dessiner le rectangle, il l'a donc dessiné en noir.
+
+Ici, P5 nous montre ses spécificités. Au lieu de passer la couleur en paramètre du rectangle, nous allons définir la couleur de manière plus global avec la fonction `fill`.
+Cette fonction, comme `background`, prend une couleur en paramètre, et va l'utiliser pour dessiner tout ce qu'on lui demande ensuite jusqu'à la prochaine instruction `fill`.
+Nous voulons dessiner notre rectangle en rouge stylé, nous allons donc utiliser cette fois une couleur RGB.
+
+```javascript
+function draw()
+{
+    fill(200,50,5);
+    rect(x,y,taille,taille);
+}
+```
+
+Pour que notre demande de changement de couleur fonctionne, il faut l'effectuer avant de dessiner notre rectangle.
+Vous pouvez rafraichir la page web, cette fois-ci le carré aura apparu.
+Par défaut, il possède un contour noir qui n'est franchement pas beau. Nous allons le retirer avec d'autres fonctions de *configuration* (comme `fill`).
+La fonction `noStroke`, litérallement *pas de contour* nous permet de retirer le contour de tout les éléments qui seront dessinés après l'instruction. Cette fonction ne prends pas de paramètres.
+
+```javascript
+function draw()
+{
+    fill(200,50,5);
+    noStroke();
+    rect(x,y,taille,taille);
+}
+```
+
+### Mouvement
+Excellent. Et si nous le faisions bouger maintenant ?
+Tout ce que nous avons à faire, c'est modifier les valeurs de position durant notre boucle *draw*.
+après l'affichage du rectangle, nous allons ajouter la ligne suivante :
+```javascript
+x++;
+```
+
+Cette instruction incrémente, donc ajoute 1, à la variable *x*. Ce qui signifie qu'à chaque image affichée, la position x augmentera de 1 pixel en x, et se déplacera donc sur la droite.
+
+Si vous relancez votre page web, vous verrez l'équivalent d'un pinceau laissant une immonde trace rouge en avançant sur la droite.
+Pourquoi ? Et bien parcequ'à chaque frame, nous dessinons un nouveau rectangle, mais nous n'effaçons pas ce que nous avons dessiné à la frame précédante !
+
+Pour corriger cela, nous allons rajouter une instruction au début de la fonction draw, et celle-ci est la même qu'au début du programme : `background(0)`. Ainsi, à chaque frame, notre fond sera de retour à un noir complet.
+Nous pouvons même utiliser notre variable pour la couleur de fond, afin de n'avoir qu'une seule valeur à modifier si nous souhaitons la changer.
+
+Voici le code complet à ce stade :
+
+```javascript
+//constantes
+const LARGEUR = 800;
+const HAUTEUR = 600;
+
+//variables globales
+let x;
+let y;
+let taille;
+let couleurFond;
+
+function setup()
+{
+    couleurFond = 0;
+    
+    createCanvas(LARGEUR,HAUTEUR);
+    background(couleurFond);
+    
+    x = LARGEUR / 2;
+    y = HAUTEUR / 2;
+    taille = 10;
+}
+
+function draw()
+{
+    background(couleurFond);
+    fill(200,50,5);
+    noStroke();
+    rect(x,y,taille,taille);
+}
+```
+
+### Tests logiques
+Tout ça c'est très bien, mais le carré nous quitte tristement et ne revient jamais.
+Nous allons donc faire en sorte que
+
+--- to contjbue
