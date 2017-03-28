@@ -337,7 +337,7 @@ L'algèbre de boole est un système de calcul dont le résultat est soit **vrai*
 
 Dans l'algèbre de boole, on utilise des opérateurs différents des habituels `+ - * /`.
 
-Opérateurs booléens principaux
+Opérateurs booléens principaux |
 ------|-----------------------
 ==    | Compare deux valeurs, retourne vrai si les valeurs des deux côtés sont égales, faux sinon
 <     | ce qui est à gauche est plus petit que ce qui est à droite
@@ -356,7 +356,7 @@ Vous pouvez voir les booléens comme des questions.
 
 Voici quelques opérateurs supplémentaires qui nous serons utiles dans le futur.
 
-Opérateurs booléens supplémentaires
+Opérateurs booléens supplémentaires |
 -----|-----------------------------
 `&&` | ET. Pour retourner vrai, les valeurs à gauche et à droite doivent être vrai
 `||` | OU. Il faut que l'une des deux valeurs soit vrai que qu'il retourne vrai
