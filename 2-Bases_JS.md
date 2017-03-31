@@ -29,7 +29,7 @@ C'est le minimum vital pour faire une page web, plus deux lignes spéciales sur 
 - `<script src="sketch.js"></script>` permet de la même manière, d'inclure un fichier *sketch.js*, qui n'existe pas encore.
 
 Nous allons le créer dès à présent, de la même manière que pour le fichier html.
-> Astuce : vous pouvez également faire *ctrl+clic* sur le nom du fichier dans la balise html, vs code vous dira qwe le fichier n'existe pas et vous proposera de le créer.
+> Astuce : vous pouvez également faire *ctrl+clic* sur le nom du fichier dans la balise html, vs code vous dira que le fichier n'existe pas et vous proposera de le créer.
 
 ## Premier code
 Nous avons créé un fichier nommé *sketch.js*. Annalysons tout d'abord le nom de ce fichier.
