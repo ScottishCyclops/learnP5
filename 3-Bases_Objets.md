@@ -73,6 +73,4 @@ On utilise cette fonction pour initializer l'objet, la plupart du temps. Par exe
 Assez parlé, créons notre première classe.
 Créez un nouveau projet P5, oubien modifiez celui créé durant l'exercice précédant.
 
-En plus des fichiers de base (index.html, sketch.js, p5.min.js), nous allons créer
-
-to be continued
+En plus des fichiers de base (index.html, sketch.js, p5.min.js), nous allons créer un fichier qui contiendra uniquement la classe. Nommez ce fichier ......
